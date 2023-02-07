@@ -27,12 +27,14 @@ public class PeopleController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", personDAO.index());
+        System.out.println(personDAO.index());
         return "people/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personDAO.show(id));
+        System.out.println(personDAO.show(id));
         return "people/show";
     }
 
@@ -72,4 +74,5 @@ public class PeopleController {
         personDAO.delete(id);
         return "redirect:/people";
     }
+
 }
